@@ -42,6 +42,7 @@ REC_BRAND = "BRELLIN"          # made-up brand of the recommended shirt (same in
 PRICE = ("18", "90")           # dollars, cents; same for the focal and the recommended shirt
 N_RATINGS = "473"              # focal rating count; same in both rating conditions
 REC_RATING = 4.0               # recommended shirt's own rating; same on every page
+REC_N_RATINGS = "451"          # recommended shirt's rating count; same on every page, close to the focal count
 
 RATINGS = {"31": 3.1, "49": 4.9}
 
@@ -154,7 +155,8 @@ li{margin:0 0 2px}
 h2{margin:24px 0 6px;font-size:24px;line-height:32px;font-weight:700}
 .card{width:180px;margin:18px auto 0;text-align:center}
 .card .name{margin-top:10px}
-.card .stars{margin-top:5px}
+.card .recrating{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:5px}
+.card .reccount{font-size:12px;line-height:16px}
 .card .price{display:inline-block;margin-top:2px}
 .revsum{margin:10px 0 6px}
 .review{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid #D5D9D9}
@@ -249,7 +251,7 @@ def page(rating_key, rec_key):
     <div class="card">
       <img class="photo" src="{data_uri(rec['image'])}" alt="{e(rec_name)}">
       <div class="name link">{nb(rec_name)}</div>
-      <div>{stars(REC_RATING, 16)}</div>
+      <div class="recrating">{stars(REC_RATING, 16)}<span class="reccount link">({REC_N_RATINGS})</span></div>
       <div>{price("small")}</div>
     </div>
 
