@@ -50,12 +50,11 @@ REC_ENLARGE = 2
 REC_TAG_BOX = (334, 44, 384, 72)         # brand tag inside the collar
 REC_DEPTH = 0.7                          # yellow: shadows relative to the photo's (this photo is more contrasty)
 REC_CRISP, REC_GRAIN = 0.6, 0.5          # firming of folds and seams; fine grain (in lightness steps)
-REC_MARGIN = 24
 SLEEVE_OUTER, SLEEVE_INNER = 366, 398    # short sleeve: height of the hem at the outer edge and at the body
 HEM_DEPTH = 30                           # height of the hem band copied from the bottom hem
 HEM_OVERLAP = 3                          # how far the sleeve hem runs onto the body
 
-WARM_MARGIN = 24                         # warm rec base: white margin around the shirt
+REC_CANVAS, REC_PAD = (760, 820), 24     # both recommended-shirt images: width and height; white space at the edges
 
 YELLOW_TOP = 97.5                        # lightness (0-100) that the yellow's highlights level off under
 BLACK_L, BLACK_DEPTH = 15.0, 0.85        # black: typical lightness; share of the photo's light-dark steps kept
@@ -171,6 +170,22 @@ def frame(res, al, margin):
     return cv2.copyMakeBorder(res, margin, margin, margin, margin, cv2.BORDER_CONSTANT, value=(255.0, 255.0, 255.0))
 
 
+def frame_same(res, al):
+    """Crops to the shirt and places it, at the same height as the other recommended shirt, in the middle
+    of a white canvas of a fixed size (REC_CANVAS). Both recommended-shirt images therefore have the same
+    width and height, so the pages they appear on are equally tall."""
+    ys, xs = np.where(al > 0.5)
+    res = res[ys.min():ys.max() + 1, xs.min():xs.max() + 1]
+    cw, ch = REC_CANVAS
+    scale = min((ch - 2 * REC_PAD) / res.shape[0], (cw - 2 * REC_PAD) / res.shape[1])
+    interp = cv2.INTER_AREA if scale < 1 else cv2.INTER_CUBIC
+    res = cv2.resize(np.clip(res, 0, 255), None, fx=scale, fy=scale, interpolation=interp)
+    canvas = np.full((ch, cw, 3), 255.0, np.float32)
+    y0, x0 = (ch - res.shape[0]) // 2, (cw - res.shape[1]) // 2
+    canvas[y0:y0 + res.shape[0], x0:x0 + res.shape[1]] = res
+    return canvas
+
+
 # ----------------------------------------------------------------------------
 # The focal shirt
 # ----------------------------------------------------------------------------
@@ -270,7 +285,7 @@ def short_sleeves(img, al):
 def make_rec(color):
     img, al = short_sleeves(rec, rec_al)
     res = recolor(img, al, rec_solid, color, smooth=1.0, crisp=REC_CRISP, grain=REC_GRAIN)
-    return frame(res, al, REC_MARGIN)
+    return frame_same(res, al)
 
 
 save(make_focal(), "focal_long_yellow.jpg")
@@ -280,7 +295,7 @@ save(make_rec(yellow(REC_DEPTH)), "rec_short_yellow.jpg")
 def make_warm_rec():
     img, al, solid = matte(read(warm_src), np.array([255.0, 255.0, 255.0], np.float32), 25)
     res = recolor(img, al, solid, black, smooth=0.6)          # the smoothing tones down the photo's heathered speckle
-    return frame(res, al, WARM_MARGIN)
+    return frame_same(res, al)
 
 
 save(make_warm_rec(), "rec_long_black.jpg")

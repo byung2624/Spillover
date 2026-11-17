@@ -153,7 +153,9 @@ h1{margin:0 0 4px;font-size:24px;line-height:32px;font-weight:400}
 ul{margin:0 0 0 54px;padding:0}
 li{margin:0 0 2px}
 h2{margin:24px 0 6px;font-size:24px;line-height:32px;font-weight:700}
-.card{width:180px;margin:18px auto 0;text-align:center}
+.card{width:250px;margin:18px auto 0;text-align:center}
+.card .photo{width:180px;margin:0 auto}
+.card .name{min-height:40px}
 .card .name{margin-top:10px}
 .card .recrating{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:5px}
 .card .reccount{font-size:12px;line-height:16px}
@@ -176,7 +178,8 @@ h2{margin:24px 0 6px;font-size:24px;line-height:32px;font-weight:700}
   h1{font-size:20px;line-height:28px}
   h2{font-size:20px;line-height:28px;margin-top:22px}
   ul{margin-left:24px}
-  .card{width:160px;margin:16px auto 0}
+  .card{width:230px;margin:16px auto 0}
+  .card .photo{width:160px}
   .review{flex-wrap:wrap}
   .review .text{flex-basis:100%;order:2}
 }
