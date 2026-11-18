@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the S7.11 stimulus pages (identical to the S7.11 pages).
+"""Builds the S7.11 stimulus pages (the S7.10 pages with the recommended yellow shirt renamed "JUVARO Lightweight T-Shirt, Neon Yellow").
 
 Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
       x 2 (shopping goal: visibility vs. warmth)
@@ -62,7 +62,7 @@ FOCAL = {"image": "focal_long_yellow.jpg",
          "name": "Long-Sleeve Shirt, Neon Yellow"}
 
 RECS = {
-    "color":  {"image": "rec_short_yellow.jpg", "name": "Short-Sleeve Shirt, Neon Yellow"},
+    "color":  {"image": "rec_short_yellow.jpg", "name": "Lightweight T-Shirt, Neon Yellow"},
     "sleeve": {"image": "rec_long_black.jpg", "name": "Long-Sleeve Shirt, Black"},
 }
 
