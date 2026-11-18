@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the S7.4 stimulus pages (the S7.3 shirts, without customer reviews, with clearly different brand names).
+"""Builds the S7.4 stimulus pages (the S7.3 shirts, with clearly different brand names and the customer reviews placed above the recommended shirt).
 
 Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
       x 2 (active goal: walks after dark vs. walks on cold mornings)
@@ -13,14 +13,18 @@ the short-sleeve shirt looks thin, so the same-sleeve-length shirt clearly serve
 The active goal is set by the shopping task in the survey, not on the page.
 So the pages differ only in the focal rating and the recommended shirt: four pages.
 
-Each page has a header, title, image, rating row, price, a purchase box, "About this item"
-(a one-line brand description and the product details), and "New arrivals" (with a "Sponsored" tag). There are no customer reviews: in S7.2 and S7.3 the reviews
-were read as a verdict on the seller, and the focal rating carried over to the recommended shirt whether
-or not it fit the goal. The focal rating is shown once, in the rating row under the title.
+Each page has a header, title, image, rating row, price, a purchase box, "About this item" (a one-line
+brand description and two product details), "Customer reviews for this item", and then "New arrivals"
+(with a "Sponsored" tag) holding the recommended shirt. The review section sits above the recommended
+shirt. It repeats the focal rating (score, stars, count) under its header and shows three short reviews, matched across the
+two rating conditions: same reviewers, dates, and topics, with only the valence and the stars changed.
+The review section is kept short so the recommended shirt appears early: the focal rating is centered on
+its own line under the header, and each review is one line (stars, text, then reviewer and date in grey), with no divider
+lines, indented to the level of the "About this item" bullets so the stars line up.
 The two shirts come from different brands, shown only in their names, as on real shopping sites. The
 brand names are written differently (Telvane in ordinary case; JUVARO in capitals, three syllables) and
 do not rhyme, so they do not read as one catalog.
-The description does not mention color, sleeves, fabric weight, warmth, or being seen: those are
+Neither the description nor the reviews mention color, sleeves, fabric weight, warmth, or being seen: those are
 conveyed only by the shirts' names and images.
 
 Usage:  python3 build.py <image folder> <output folder>
@@ -65,10 +69,20 @@ DESCRIPTION = [
     f"{FOCAL_BRAND} makes everyday basics for men and women",
     "Relaxed fit, true to size",
     "Ribbed crew neck",
-    "Side slits at the hem",
-    "Double-stitched hems",
-    "Holds its shape wash after wash",
 ]
+
+# Customer reviews for the focal shirt. Matched across rating conditions: the reviewer, date, and topic
+# of each review are the same; only the valence and the stars differ.
+# Like the description, nothing here mentions color, fabric weight, warmth, or being seen.
+REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
+REVIEWS = {
+    "31": [(3, "Poorly made and uncomfortable to wear."),
+           (3, "Lost its shape after a few washes."),
+           (3, "Very dissatisfied. Would not recommend!")],
+    "49": [(5, "Well made and comfortable to wear."),
+           (5, "Kept its shape after many washes."),
+           (5, "Very satisfied. Would recommend!")],
+}
 
 LABELS = {
     "rating": {"31": "3.1 stars", "49": "4.9 stars"},
@@ -150,6 +164,11 @@ h1{margin:0 0 4px;font-size:24px;line-height:32px;font-weight:400}
 ul{margin:0 0 0 54px;padding:0}
 li{margin:0 0 2px}
 h2{margin:24px 0 6px;font-size:24px;line-height:32px;font-weight:700}
+.revsum{margin:6px 0 10px;justify-content:center}
+.reviews{margin-left:54px}
+.review{display:flex;align-items:center;gap:9px;padding:4px 0}
+.review .text{font-size:15px;line-height:22px;font-weight:700}
+.review .who{font-size:12px;line-height:22px;color:#565959}
 .spons{margin-left:4px;font-size:13px;line-height:20px;font-weight:400;color:#565959;white-space:nowrap}
 .spons svg{position:relative;top:2px}
 .card{width:250px;margin:18px auto 0;text-align:center}
@@ -190,6 +209,14 @@ INFO_ICON = ('<svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"
 
 CHEVRON = ('<svg viewBox="0 0 12 8" width="11" height="8" aria-hidden="true">'
            '<path d="M1.5 1.5L6 6l4.5-4.5" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+
+def reviews(rating_key):
+    e = html.escape
+    return "".join(
+        f'<div class="review">{stars(n, 16)}<span class="text">{e(text)}</span>'
+        f'<span class="who">{e(who)}, {e(date)}</span></div>'
+        for (n, text), (who, date) in zip(REVIEWS[rating_key], REVIEWERS))
 
 
 def page(rating_key, rec_key):
@@ -239,6 +266,10 @@ def page(rating_key, rec_key):
 
     <h2>About this item</h2>
     <ul>{"".join(f"<li>{e(d)}</li>" for d in DESCRIPTION)}</ul>
+
+    <h2>Customer reviews for this item</h2>
+    <div class="rating revsum"><span class="score">{rating}</span>{stars(rating, 24)}<span class="count link">({N_RATINGS})</span></div>
+    <div class="reviews">{reviews(rating_key)}</div>
 
     <h2>{e(REC_HEADER)} <span class="spons">Sponsored {INFO_ICON}</span></h2>
     <div class="card">
