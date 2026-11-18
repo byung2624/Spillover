@@ -75,6 +75,9 @@ LABELS = {
     "rec": {"color": "Same color (short-sleeve, yellow)", "sleeve": "Same sleeve length (long-sleeve, black)"},
 }
 
+# Layout note: the card under the recommendation header has a fixed minimum height (see ".card{min-height" in CSS),
+# equal to its height when the shirt name takes two lines. A one-line name then sits right above the stars,
+# and the spare room goes below the price, so all four pages keep the same height.
 # ----------------------------------------------------------------------------
 # Pieces
 # ----------------------------------------------------------------------------
@@ -151,7 +154,7 @@ h2{margin:24px 0 6px;font-size:24px;line-height:32px;font-weight:700}
 .spons svg{position:relative;top:2px}
 .card{width:250px;margin:18px auto 0;text-align:center}
 .card .photo{width:180px;margin:0 auto}
-.card .name{min-height:40px}
+.card{min-height:299px}
 .card .name{margin-top:10px}
 .card .recrating{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:5px}
 .card .reccount{font-size:12px;line-height:16px}
