@@ -2,7 +2,7 @@
 """Builds the S9.1 stimulus pages.
 
 Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
-      x 2 (shopping goal: bike rides on roads after dark vs. bike rides on cold afternoons)
+      x 2 (shopping goal: bike rides on roads after dark vs. bike rides on cold mornings)
 The goal is set by the shopping task in the survey, not on the page, so the same page serves both goals.
 There are two pages, one per rating: s91_31.html and s91_49.html.
 
@@ -11,7 +11,7 @@ a neon yellow backpack cover from a different brand ($11.90). Its image shows th
 on the right, the cover fitted over a backpack seen from the strap side and the cover folded into its pouch. The two products are different kinds of things
 and share only their color. The cover is not worn on the body: it goes over a backpack, so it does nothing
 to keep the rider warm. Its color helps under the after-dark goal (drivers need to see the rider) and does
-nothing under the cold-afternoon goal. The names say "Neon Yellow" and never mention visibility, so that
+nothing under the cold-morning goal. The names say "Neon Yellow" and never mention visibility, so that
 the color serves a goal has to be inferred from the shopping situation.
 
 Each page has a header, title, image, rating row, price, a purchase box, "About this item" (a one-line
