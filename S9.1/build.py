@@ -2,24 +2,25 @@
 """Builds the S9.1 stimulus pages.
 
 Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
-      x 2 (shopping goal: bike rides on roads after dark vs. bike rides on windy afternoons)
+      x 2 (shopping goal: bike rides on roads after dark vs. bike rides on cold afternoons)
 The goal is set by the shopping task in the survey, not on the page, so the same page serves both goals.
 There are two pages, one per rating: s91_31.html and s91_49.html.
 
-The focal product is a neon yellow windbreaker. The recommended product, the same on both pages, is a neon
-yellow bike helmet from a different brand, named "Bike Helmet, Lightweight, Neon Yellow": an open, vented helmet
-that does nothing to block wind. The two products are different kinds of things and share only
-their color. The color helps under the after-dark goal (drivers need to see the rider) and does nothing
-under the windy-afternoon goal. The names say "Neon Yellow" and never mention visibility, so that the
-color serves a goal has to be inferred from the shopping situation.
+The focal product is a neon yellow windbreaker ($28.90). The recommended product, the same on both pages, is
+a neon yellow backpack cover from a different brand ($11.90). Its image shows the cover large on the left and,
+on the right, the cover fitted over a backpack seen from the strap side and the cover folded into its pouch. The two products are different kinds of things
+and share only their color. The cover is not worn on the body: it goes over a backpack, so it does nothing
+to keep the rider warm. Its color helps under the after-dark goal (drivers need to see the rider) and does
+nothing under the cold-afternoon goal. The names say "Neon Yellow" and never mention visibility, so that
+the color serves a goal has to be inferred from the shopping situation.
 
 Each page has a header, title, image, rating row, price, a purchase box, "About this item" (a one-line
 brand description and two product details), "Customer reviews for this item", and then "New arrivals"
 (with a "Sponsored" tag) holding the recommended product. The review section repeats the focal rating
 (score, stars, count) and shows three short reviews, matched across the two rating conditions: same
 reviewers, dates, and topics, with only the valence and the stars changed. The reviews are about a jacket's
-zipper, seams, and fit, so their content does not describe a helmet.
-Neither the description nor the reviews mention color, wind, weather, or being seen.
+zipper, seams, and fit, so their content does not describe a backpack cover.
+Neither the description nor the reviews mention color, warmth, weather, or being seen.
 
 Usage:  python3 build.py <image folder> <output folder>
 Output: two self-contained pages named  s91_<rating>.html  and an index.html.
@@ -40,7 +41,8 @@ OUT = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else pathlib.Path("out")
 # ----------------------------------------------------------------------------
 FOCAL_BRAND = "Telvane"        # made-up brand of the focal product
 REC_BRAND = "JUVARO"               # made-up brand of the recommended product
-PRICE = ("28", "90")           # dollars, cents; same for the focal and the recommended product
+PRICE = ("28", "90")           # focal product: dollars, cents
+REC_PRICE = ("11", "90")       # recommended product: dollars, cents
 N_RATINGS = "473"              # focal rating count; same in both rating conditions
 REC_RATING = 4.0               # recommended product's own rating; same on every page
 REC_HEADER = "New arrivals"   # header above the recommended product, followed by a small grey "Sponsored" tag
@@ -52,10 +54,10 @@ FOCAL = {"image": "focal_windbreaker.jpg",
          "name": "Windbreaker, Neon Yellow"}
 
 RECS = {
-    "helmet": {"image": "rec_helmet.jpg", "name": "Bike Helmet, Lightweight, Neon Yellow"},
+    "cover": {"image": "rec_cover.jpg", "name": "Backpack Cover, Neon Yellow"},
 }
 
-# Constant on every page. Nothing here mentions color, wind, weather, or being seen.
+# Constant on every page. Nothing here mentions color, warmth, weather, or being seen.
 # The first line is a very short description of the focal product's brand, so the brand reads as a company
 # of its own. It makes no claim about quality.
 DESCRIPTION = [
@@ -66,7 +68,7 @@ DESCRIPTION = [
 
 # Customer reviews for the focal windbreaker. Matched across rating conditions: the reviewer, date, and topic
 # of each review are the same; only the valence and the stars differ. Each review is about a jacket feature
-# (zipper, seams, fit), so its content does not describe a helmet. Nothing here mentions color, wind,
+# (zipper, seams, fit), so its content does not describe a backpack cover. Nothing here mentions color, warmth,
 # weather, or being seen.
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEWS = {
@@ -80,7 +82,7 @@ REVIEWS = {
 
 LABELS = {
     "rating": {"31": "3.1 stars", "49": "4.9 stars"},
-    "rec": {"helmet": "Bike helmet, lightweight, neon yellow"},
+    "rec": {"cover": "Backpack cover, neon yellow"},
 }
 
 # Layout note: the card under the recommendation header has a fixed minimum height (see ".card{min-height" in CSS),
@@ -113,9 +115,10 @@ def nb(text):
                     for w in text.split(" "))
 
 
-def price(cls=""):
-    return (f'<span class="price {cls}"><span class="sym">$</span>{PRICE[0]}'
-            f'<span class="frac">{PRICE[1]}</span></span>')
+def price(cls="", amount=None):
+    amount = amount or PRICE
+    return (f'<span class="price {cls}"><span class="sym">$</span>{amount[0]}'
+            f'<span class="frac">{amount[1]}</span></span>')
 
 
 CSS = """
@@ -167,7 +170,7 @@ h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
 .spons{margin-left:4px;font-size:13px;line-height:20px;font-weight:400;color:#565959;white-space:nowrap}
 .spons svg{position:relative;top:2px}
 .card{width:250px;margin:0 auto;text-align:center}
-.card .photo{width:180px;margin:0 auto}
+.card .photo{width:250px;margin:0 auto}
 .card{min-height:299px}
 .card .name{margin-top:10px}
 .card .recrating{display:flex;align-items:center;justify-content:center;gap:5px;margin-top:5px}
@@ -188,7 +191,7 @@ h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
   h2{font-size:20px;line-height:28px;margin:18px 0 18px}
   ul{margin-left:24px}
   .card{width:230px;margin:0 auto}
-  .card .photo{width:160px}
+  .card .photo{width:220px}
 }
 """
 
@@ -271,7 +274,7 @@ def page(rating_key, rec_key):
       <img class="photo" src="{data_uri(rec['image'])}" alt="{e(rec_name)}">
       <div class="name link">{nb(rec_name)}</div>
       <div class="recrating">{stars(REC_RATING, 16)}<span class="reccount link">({REC_N_RATINGS})</span></div>
-      <div>{price("small")}</div>
+      <div>{price("small", REC_PRICE)}</div>
     </div>
   </div>
 
