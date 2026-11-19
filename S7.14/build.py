@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Builds the S7.14 stimulus pages (identical to the S7.12 and S7.14 pages).
+"""Builds the S7.14 stimulus pages (the S7.13 pages with the three written reviews replaced by a star-rating breakdown).
 
 Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
       x 2 (shopping goal: visibility vs. warmth)
@@ -20,15 +20,13 @@ The goal is set by the shopping task in the survey, not on the page, so each pag
 Each page has a header, title, image, rating row, price, a purchase box, "About this item" (a one-line
 brand description and two product details), "Customer reviews for this item", and then "New arrivals"
 (with a "Sponsored" tag) holding the recommended shirt. The review section sits above the recommended
-shirt. It repeats the focal rating (score, stars, count) under its header and shows three short reviews, matched across the
-two rating conditions: same reviewers, dates, and topics, with only the valence and the stars changed.
-The review section is kept short so the recommended shirt appears early: the focal rating is centered on
-its own line under the header, and each review is one line (stars, text, then reviewer and date in grey), with no divider
-lines, indented to the level of the "About this item" bullets so the stars line up.
+shirt. Under its header it shows a star-rating breakdown in the style of large shopping sites: the focal rating (score and
+stars), the number of ratings, and one bar per star level (5 to 1) with its percentage. There are no written reviews. The percentages average to the displayed rating in each rating condition, and the
+block has the same size in both conditions.
 The two shirts come from different brands, shown only in their names, as on real shopping sites. The
 brand names are written differently (Telvane in ordinary case; JUVARO in capitals, three syllables) and
 do not rhyme, so they do not read as one catalog.
-Neither the description nor the reviews mention color, sleeves, fabric weight, warmth, or being seen: those are
+Neither the description nor the review section mentions color, sleeves, fabric weight, warmth, or being seen: those are
 conveyed only by the shirts' names and images.
 
 Usage:  python3 build.py <image folder> <output folder>
@@ -75,18 +73,15 @@ DESCRIPTION = [
     "Ribbed crew neck",
 ]
 
-# Customer reviews for the focal shirt. Matched across rating conditions: the reviewer, date, and topic
-# of each review are the same; only the valence and the stars differ.
-# Like the description, nothing here mentions color, fabric weight, warmth, or being seen.
-REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
-REVIEWS = {
-    "31": [(3, "Poorly made and uncomfortable to wear."),
-           (3, "Lost its shape after a few washes."),
-           (3, "Very dissatisfied. Would not recommend!")],
-    "49": [(5, "Well made and comfortable to wear."),
-           (5, "Kept its shape after many washes."),
-           (5, "Very satisfied. Would recommend!")],
+# Customer reviews for the focal shirt: a star-rating breakdown (percentage of ratings at 5, 4, 3, 2, and 1 stars), as on
+# large shopping sites, and no written reviews. The percentages add to 100 and their average equals the displayed rating
+# (4.9 stars: 4.89; 3.1 stars: 3.10). Nothing here says anything about quality, color, sleeves, warmth, or being seen.
+BREAKDOWN = {
+    "49": [93, 5, 1, 0, 1],      # percent of ratings at 5, 4, 3, 2, 1 stars
+    "31": [31, 14, 16, 12, 27],
 }
+for _k, _v in BREAKDOWN.items():
+    assert sum(_v) == 100 and abs(sum(s * p for s, p in zip((5, 4, 3, 2, 1), _v)) / 100 - float(_k) / 10) < 0.05
 
 LABELS = {
     "rating": {"31": "3.1 stars", "49": "4.9 stars"},
@@ -169,11 +164,15 @@ ul{margin:0 0 0 54px;padding:0}
 li{margin:0 0 2px}
 /* Same spacing for every section: the visible white space above a section header equals the white space below it. */
 h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
-.revsum{margin:5px 0 10px;justify-content:center}
-.reviews{margin:0 0 -2px 54px}
-.review{display:flex;align-items:center;gap:9px;padding:4px 0}
-.review .text{font-size:15px;line-height:22px;font-weight:700}
-.review .who{font-size:12px;line-height:22px;color:#565959}
+.hist{width:356px;max-width:100%;margin:0 auto;padding-bottom:4px;text-align:left}
+.hist .sum{display:flex;align-items:center;gap:9px}
+.hist .total{margin:8px 0 11px;font-size:14px;line-height:20px;color:#565959}
+.hist .row{display:flex;align-items:center;height:19px;margin:0 0 11px;font-size:14px;line-height:19px}
+.hist .row:last-child{margin-bottom:0}
+.hist .row .lab{flex:none;width:21px}
+.hist .row .bar{flex:1;height:17px;border:1px solid #8D9096;border-radius:5px;background:#fff;overflow:hidden}
+.hist .row .fill{height:100%;background:#DE7921;border-radius:4px 0 0 4px}
+.hist .row .pct{flex:none;width:50px;text-align:right}
 .spons{margin-left:4px;font-size:13px;line-height:20px;font-weight:400;color:#565959;white-space:nowrap}
 .spons svg{position:relative;top:2px}
 .card{width:250px;margin:0 auto;text-align:center}
@@ -216,12 +215,15 @@ CHEVRON = ('<svg viewBox="0 0 12 8" width="11" height="8" aria-hidden="true">'
            '<path d="M1.5 1.5L6 6l4.5-4.5" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
-def reviews(rating_key):
-    e = html.escape
-    return "".join(
-        f'<div class="review">{stars(n, 16)}<span class="text">{e(text)}</span>'
-        f'<span class="who">{e(who)}, {e(date)}</span></div>'
-        for (n, text), (who, date) in zip(REVIEWS[rating_key], REVIEWERS))
+def breakdown(rating_key):
+    """Star-rating breakdown: score and stars, number of ratings, and one bar per star level."""
+    rows = "".join(
+        f'<div class="row"><span class="lab link">{s}</span>'
+        f'<span class="bar"><span class="fill" style="display:block;width:{p}%"></span></span>'
+        f'<span class="pct link">{p}%</span></div>'
+        for s, p in zip((5, 4, 3, 2, 1), BREAKDOWN[rating_key]))
+    return (f'<div class="hist"><div class="sum"><span class="score">{RATINGS[rating_key]}</span>{stars(RATINGS[rating_key], 24)}</div>'
+            f'<div class="total">{N_RATINGS} global ratings</div>{rows}</div>')
 
 
 def page(rating_key, rec_key):
@@ -273,8 +275,7 @@ def page(rating_key, rec_key):
     <ul>{"".join(f"<li>{e(d)}</li>" for d in DESCRIPTION)}</ul>
 
     <h2>Customer reviews for this item</h2>
-    <div class="rating revsum"><span class="score">{rating}</span>{stars(rating, 24)}<span class="count link">({N_RATINGS})</span></div>
-    <div class="reviews">{reviews(rating_key)}</div>
+    {breakdown(rating_key)}
 
     <h2>{e(REC_HEADER)} <span class="spons">Sponsored {INFO_ICON}</span></h2>
     <div class="card">
