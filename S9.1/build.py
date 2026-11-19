@@ -2,16 +2,17 @@
 """Builds the S9.1 stimulus pages.
 
 Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
-      x 2 (shopping goal: bike rides on roads after dark vs. bike rides on cold mornings)
+      x 2 (shopping goal: bike rides on roads after dark vs. bike rides on windy afternoons)
 The goal is set by the shopping task in the survey, not on the page, so the same page serves both goals.
 There are two pages, one per rating: s91_31.html and s91_49.html.
 
-The focal product is a neon yellow windbreaker ($28.90). The recommended product, the same on both pages, is
+The focal product is a neon yellow cycling jacket ($28.90), named "Cycling Jacket" and not "Windbreaker" so that the
+wind goal does not repeat the product's name and the product fits both goals equally. The recommended product, the same on both pages, is
 a neon yellow backpack cover from a different brand ($11.90). Its image shows the cover large on the left and,
 on the right, the cover fitted over a backpack seen from the strap side and the cover folded into its pouch. The two products are different kinds of things
 and share only their color. The cover is not worn on the body: it goes over a backpack, so it does nothing
-to keep the rider warm. Its color helps under the after-dark goal (drivers need to see the rider) and does
-nothing under the cold-morning goal. The names say "Neon Yellow" and never mention visibility, so that
+to block the wind. Its color helps under the after-dark goal (drivers need to see the rider) and does
+nothing under the windy-afternoon goal. The names say "Neon Yellow" and never mention visibility, so that
 the color serves a goal has to be inferred from the shopping situation.
 
 Each page has a header, title, image, rating row, price, a purchase box, "About this item" (a one-line
@@ -20,7 +21,7 @@ brand description and two product details), "Customer reviews for this item", an
 (score, stars, count) and shows three short reviews, matched across the two rating conditions: same
 reviewers, dates, and topics, with only the valence and the stars changed. The reviews are about a jacket's
 zipper, seams, and fit, so their content does not describe a backpack cover.
-Neither the description nor the reviews mention color, warmth, weather, or being seen.
+Neither the description nor the reviews mention color, wind, weather, or being seen.
 
 Usage:  python3 build.py <image folder> <output folder>
 Output: two self-contained pages named  s91_<rating>.html  and an index.html.
@@ -51,13 +52,13 @@ REC_N_RATINGS = "451"          # recommended product's rating count; same on eve
 RATINGS = {"31": 3.1, "49": 4.9}
 
 FOCAL = {"image": "focal_windbreaker.jpg",
-         "name": "Windbreaker, Neon Yellow"}
+         "name": "Cycling Jacket, Neon Yellow"}
 
 RECS = {
     "cover": {"image": "rec_cover.jpg", "name": "Backpack Cover, Neon Yellow"},
 }
 
-# Constant on every page. Nothing here mentions color, warmth, weather, or being seen.
+# Constant on every page. Nothing here mentions color, wind, weather, or being seen.
 # The first line is a very short description of the focal product's brand, so the brand reads as a company
 # of its own. It makes no claim about quality.
 DESCRIPTION = [
@@ -66,9 +67,9 @@ DESCRIPTION = [
     "Full-zip front with a hood",
 ]
 
-# Customer reviews for the focal windbreaker. Matched across rating conditions: the reviewer, date, and topic
+# Customer reviews for the focal jacket. Matched across rating conditions: the reviewer, date, and topic
 # of each review are the same; only the valence and the stars differ. Each review is about a jacket feature
-# (zipper, seams, fit), so its content does not describe a backpack cover. Nothing here mentions color, warmth,
+# (zipper, seams, fit), so its content does not describe a backpack cover. Nothing here mentions color, wind,
 # weather, or being seen.
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEWS = {
