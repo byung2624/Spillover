@@ -140,7 +140,7 @@ body{font-family:"Amazon Ember",Arial,sans-serif;font-size:14px;line-height:20px
 .photo{display:block;width:100%;height:auto}
 h1{margin:0 0 4px;font-size:24px;line-height:32px;font-weight:400}
 .rating{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:12px 0 16px}
-.score{font-size:23px;line-height:28px}
+.score{font-size:23px;line-height:28px;font-weight:700}
 .count{font-size:14px;line-height:20px}
 .stars{display:inline-flex;gap:1px}
 .stars svg{display:block}
