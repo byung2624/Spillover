@@ -9,9 +9,9 @@ Design: 2 (focal product rating: 3.1 vs. 4.9 stars)
 The goal is set by the shopping task in the survey, not on the page, so the same page serves both goals.
 There are two pages, one per rating: s93_31.html and s93_49.html.
 
-The focal product is a neon yellow cycling jacket ($28.90), named "Cycling Jacket" and not "Windbreaker" so that the
+The focal product is a neon yellow cycling jacket ($24.90), named "Cycling Jacket" and not "Windbreaker" so that the
 product fits both goals equally. The recommended product, the same on both pages, is
-a neon yellow backpack cover from a different brand ($11.90). Its image shows the cover large on the left and,
+a neon yellow backpack cover from a different brand ($24.90, the same price). Its image shows the cover large on the left and,
 on the right, the cover fitted over a backpack seen from the strap side and the cover folded into its pouch. The two products are different kinds of things
 and share only their color. The cover is not worn on the body: it goes over a backpack, so it does nothing
 to keep the rider warm. Its color helps under the after-dark goal (drivers need to see the rider) and does
@@ -45,8 +45,8 @@ OUT = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else pathlib.Path("out")
 # ----------------------------------------------------------------------------
 FOCAL_BRAND = "Telvane"        # made-up brand of the focal product
 REC_BRAND = "JUVARO"               # made-up brand of the recommended product
-PRICE = ("28", "90")           # focal product: dollars, cents
-REC_PRICE = ("11", "90")       # recommended product: dollars, cents
+PRICE = ("24", "90")           # focal product: dollars, cents
+REC_PRICE = ("24", "90")       # recommended product: dollars, cents (matched to the focal product)
 N_RATINGS = "473"              # focal rating count; same in both rating conditions
 REC_RATING = 4.0               # recommended product's own rating; same on every page
 REC_HEADER = "New arrivals"   # header above the recommended product, followed by a small grey "Sponsored" tag
