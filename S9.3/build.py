@@ -301,6 +301,7 @@ def index(rows):
 table{{border-collapse:collapse}}td,th{{border:1px solid #ccc;padding:6px 10px;text-align:left}}th{{background:#f3f4f6}}</style>
 </head><body>
 <h1 style="font-size:18px">S9.3 stimuli: focal rating (3.1 vs. 4.9 stars)</h1>
+<p>Prices: both products $19.90.</p>
 <p>For the researcher only. The goal is set by the shopping task in the survey, so each page serves both goal conditions.</p>
 <table><tr><th>Page</th><th>Focal product rating</th><th>Recommended product</th></tr>{trs}</table>
 </body></html>
