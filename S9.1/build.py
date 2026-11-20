@@ -7,12 +7,12 @@ The goal is set by the shopping task in the survey, not on the page, so the same
 There are two pages, one per rating: s91_31.html and s91_49.html.
 
 The focal product is a neon yellow cycling jacket ($28.90), named "Cycling Jacket" and not "Windbreaker" so that the
-wind goal does not repeat the product's name and the product fits both goals equally. The recommended product, the same on both pages, is
+product fits both goals equally. The recommended product, the same on both pages, is
 a neon yellow backpack cover from a different brand ($11.90). Its image shows the cover large on the left and,
 on the right, the cover fitted over a backpack seen from the strap side and the cover folded into its pouch. The two products are different kinds of things
 and share only their color. The cover is not worn on the body: it goes over a backpack, so it does nothing
-to block the wind. Its color helps under the after-dark goal (drivers need to see the rider) and does
-nothing under the windy-afternoon goal. The names say "Neon Yellow" and never mention visibility, so that
+to keep the rider warm. Its color helps under the after-dark goal (drivers need to see the rider) and does
+nothing under the windy-afternoon (warmth) goal. The names say "Neon Yellow" and never mention visibility, so that
 the color serves a goal has to be inferred from the shopping situation.
 
 Each page has a header, title, image, rating row, price, a purchase box, "About this item" (a one-line
