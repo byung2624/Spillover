@@ -6,7 +6,7 @@ S10.1 uses a new product pair in the same page layout as S9.8:
   - recommended product: "JUVARO Everyday Backpack, Fluorescent Yellow", under "New arrivals - Sponsored".
 Both cost $49.99. The two products are different kinds of product; what they share is the fluorescent yellow color.
 "About this item" has four lines. The first two point to what the vents and the color do ("force air through the helmet and
-reduce sweating", "stands out in low light") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
+reduce sweating", "catches the eye from every side and stays bright in low light") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
 There is no brand line.
 Individual reviews show their stars, the reviewer's name, and the date, with no review text (as in S9.6-S9.8).
 
@@ -58,7 +58,7 @@ RECS = {
 # from the shopping goals (no "drivers", "notice", "spot", "cool", "heat", or "hot").
 DESCRIPTION = [
     "17 large air vents force air through the helmet and reduce sweating",
-    "Fluorescent yellow matte finish stands out in low light",
+    "Fluorescent yellow finish catches the eye from every side and stays bright in low light",
     "Lightweight, 9.5 oz",
     "Dial at the back for a snug fit",
 ]
