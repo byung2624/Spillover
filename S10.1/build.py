@@ -5,8 +5,8 @@ S10.1 uses a new product pair in the same page layout as S9.8:
   - focal product: "Telvane Bike Helmet, Fluorescent Yellow" (a vented bike helmet);
   - recommended product: "JUVARO Everyday Backpack, Fluorescent Yellow", under "New arrivals - Sponsored".
 Both cost $49.99. The two products are different kinds of product; what they share is the fluorescent yellow color.
-"About this item" has four lines. The first two point to what the vents and the color do ("keep air flowing over your
-head", "stands out in low light") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
+"About this item" has four lines. The first two point to what the vents and the color do ("force air through the helmet and
+reduce sweating", "stands out in low light") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
 There is no brand line.
 Individual reviews show their stars, the reviewer's name, and the date, with no review text (as in S9.6-S9.8).
 
@@ -57,7 +57,7 @@ RECS = {
 # Constant on every page. The first two lines point to what the vents and the color do, without using any wording
 # from the shopping goals (no "drivers", "notice", "spot", "cool", "heat", or "hot").
 DESCRIPTION = [
-    "Large air vents across the shell keep air flowing over your head",
+    "17 large air vents force air through the helmet and reduce sweating",
     "Fluorescent yellow matte finish stands out in low light",
     "Lightweight, 9.5 oz",
     "Dial at the back for a snug fit",
