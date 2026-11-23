@@ -73,12 +73,12 @@ DESCRIPTION = [
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
 REVIEW_TEXT = {
-    "31": ["Just okay. Feels cheaply made.",
-           "Disappointed. Not worth the price.",
+    "31": ["Feels cheaply made.",
+           "Not happy with it. Not worth the price.",
            "Not what I expected. Would not buy again."],
-    "49": ["Great helmet. Well made and feels solid.",
-           "Very happy with it. Worth the price.",
-           "Exactly what I wanted. Would buy again."],
+    "49": ["Feels well made.",
+           "Happy with it. Worth the price.",
+           "What I expected. Would buy again."],
 }
 
 LABELS = {
