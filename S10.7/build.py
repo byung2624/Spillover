@@ -169,7 +169,7 @@ h1{margin:0 0 4px;font-size:24px;line-height:32px;font-weight:400}
 .meta td{padding:2px 0;vertical-align:top}
 .meta td:first-child{color:#565959;padding-right:12px;white-space:nowrap}
 ul{margin:0 0 0 54px;padding:0}
-li{margin:0 0 2px}
+li{margin:0 0 3px;font-size:15px;line-height:22px}
 /* Same spacing for every section: the visible white space above a section header equals the white space below it. */
 h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
 .revsum{margin:5px 0 10px;justify-content:center}
