@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Builds the S10.4.7 stimulus pages.
 
-S10.4.7 is S10.4.6 with two changes to the page:
+S10.4.7 is S10.4.6 with three changes to the page:
   a. the review section shows a star-rating breakdown (the rating, the number of ratings, and one bar per star level with
      its percentage), as in S7.14; there are still no individual reviews;
-  b. the backpack's own rating is back to 4.0 stars (was 3.5 in S10.4.6).
+  b. the backpack's own rating is back to 4.0 stars (was 3.5 in S10.4.6);
+  c. the product names carry no color word: "HelmetPro Bike Helmet" and "BagStudio Everyday Backpack" (S10.4.6 said
+     ", Yellow"). The color shows in the photos, and the helmet's "About this item" line still names the fluorescent yellow finish.
 In the survey, the four cells are assigned by one randomizer (S10.4.6 used two, one after the other).
 What S10.4.6 was:
 
@@ -19,8 +21,8 @@ S10.4.2 used the S10.4 pages unchanged.
 S10.4 is S10.1 with one change: the recommended backpack's photo is a plain backpack with no reflective tape
 (the photo used in S10.2 and S10.3). Everything else on the page is as in S10.1.
 Products, in the same page layout as S9.8:
-  - focal product: "HelmetPro Bike Helmet, Yellow" (a vented bike helmet);
-  - recommended product: "BagStudio Everyday Backpack, Yellow", under "New arrivals - Sponsored".
+  - focal product: "HelmetPro Bike Helmet" (a vented bike helmet);
+  - recommended product: "BagStudio Everyday Backpack", under "New arrivals - Sponsored".
 Both cost $49.99. The two products are different kinds of product; what they share is the fluorescent yellow color.
 "About this item" has four lines. The first two point to what the vents and the color do ("force air through the helmet and
 reduce sweating", "stays bright on the road, day or night") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
@@ -65,10 +67,10 @@ REC_N_RATINGS = "451"          # recommended product's rating count; same on eve
 RATINGS = {"31": 3.1, "49": 4.9}
 
 FOCAL = {"image": "focal_helmet.jpg",
-         "name": "Bike Helmet, Yellow"}
+         "name": "Bike Helmet"}
 
 RECS = {
-    "backpack": {"image": "rec_backpack.jpg", "name": "Everyday Backpack, Yellow"},
+    "backpack": {"image": "rec_backpack.jpg", "name": "Everyday Backpack"},
 }
 
 # Constant on every page. The first two lines point to what the vents and the color do, without using any wording
@@ -96,7 +98,7 @@ for _k, _v in BREAKDOWN.items():
 
 LABELS = {
     "rating": {"31": "3.1 stars", "49": "4.9 stars"},
-    "rec": {"backpack": "Everyday backpack, yellow"},
+    "rec": {"backpack": "Everyday backpack"},
 }
 
 # Layout note: the card under the recommendation header has a fixed minimum height (see ".card{min-height" in CSS),
@@ -179,19 +181,19 @@ h1{margin:0 0 4px;font-size:24px;line-height:32px;font-weight:400}
 .meta td{padding:2px 0;vertical-align:top}
 .meta td:first-child{color:#565959;padding-right:12px;white-space:nowrap}
 ul{margin:0 0 0 54px;padding:0}
-li{margin:0 0 2px}
+li{margin:0 0 3px;font-size:15px;line-height:22px}
 /* Same spacing for every section: the visible white space above a section header equals the white space below it. */
 h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
 .revsum{margin:5px 0 10px;justify-content:center}
-.hist{width:356px;max-width:100%;margin:0 auto;padding-bottom:4px;text-align:left}
+.hist{width:300px;max-width:calc(100% - 54px);margin:0 0 0 54px;padding-bottom:4px;text-align:left}
 .hist .sum{display:flex;align-items:center;gap:9px}
-.hist .total{margin:8px 0 11px;font-size:14px;line-height:20px;color:#565959}
-.hist .row{display:flex;align-items:center;height:19px;margin:0 0 11px;font-size:14px;line-height:19px}
+.hist .total{margin:6px 0 9px;font-size:13px;line-height:18px;color:#565959}
+.hist .row{display:flex;align-items:center;height:17px;margin:0 0 8px;font-size:13px;line-height:17px}
 .hist .row:last-child{margin-bottom:0}
-.hist .row .lab{flex:none;width:21px}
-.hist .row .bar{flex:1;height:17px;border:1px solid #8D9096;border-radius:5px;background:#fff;overflow:hidden}
+.hist .row .lab{flex:none;width:19px}
+.hist .row .bar{flex:1;height:14px;border:1px solid #8D9096;border-radius:5px;background:#fff;overflow:hidden}
 .hist .row .fill{height:100%;background:#DE7921;border-radius:4px 0 0 4px}
-.hist .row .pct{flex:none;width:50px;text-align:right}
+.hist .row .pct{flex:none;width:44px;text-align:right}
 .reviews{margin:0 0 -2px 54px}
 .review{display:flex;align-items:center;gap:9px;padding:4px 0}
 .review .text{font-size:15px;line-height:22px;font-weight:700}
