@@ -3,7 +3,7 @@
 
 S10.4.4 is S10.4.2 with four changes, all aimed at a lower evaluation of the recommended backpack when the helmet is rated 3.1 stars:
   1. the backpack's own rating is 3.5 stars (was 4.0);
-  2. the three individual helmet reviews show 3, 1 and 3 stars at 3.1 stars (were 3, 3, 3) and 5, 4 and 5 stars at 4.9 stars (were 5, 5, 5),
+  2. the three individual helmet reviews show 1, 1 and 2 stars at 3.1 stars (were 3, 3, 3) and 5, 5 and 4 stars at 4.9 stars (were 5, 5, 5),
      and the review summary reads "3.1 out of 5" / "4.9 out of 5";
   3. the backpack is a plainer one (new photo) and its name drops "Everyday";
   4. the backpack costs $13.90 (was $49.99). The helmet stays at $49.99.
@@ -75,7 +75,7 @@ DESCRIPTION = [
 # Individual reviews of the focal helmet, with no review text (S9.6): each shows its stars, the reviewer's name,
 # and the date. Same reviewers and dates in both rating conditions; only the stars differ.
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
-REVIEW_STARS = {"31": [3, 1, 3], "49": [5, 4, 5]}
+REVIEW_STARS = {"31": [1, 1, 2], "49": [5, 5, 4]}
 
 LABELS = {
     "rating": {"31": "3.1 stars", "49": "4.9 stars"},
