@@ -5,12 +5,12 @@ S11.1 is S10.4.2 with one change: each individual review of the focal helmet has
 The first review says the helmet was bought for riding at night and the second that it is used for long rides in the sun;
 each then gives a general verdict (satisfaction, value). The third review is a general verdict only.
 At 4.9 stars the verdicts are positive. At 3.1 stars the night rider is "not very satisfied", the sun rider finds it
-"fine for the price, nothing more", and the third reviewer calls it "average".
+"not really worth the price", and the third reviewer calls it "average".
 The use lines are identical in both rating conditions, so only the verdicts differ. The verdicts are general: they do not
 say whether the color or the vents work. The use lines tie the helmet to each shopping goal's situation without using
 the goals' own words (no dark, drivers, notice, spot, heat, hot, or cool). The recommended backpack shares only the color.
-Note: at 3.1 stars the night rider's verdict is more negative than the sun rider's, so the two goal-matched reviews are not
-equal in strength. Check attitude toward the helmet for a rating x goal difference when reading the results.
+At 3.1 stars the two goal-matched verdicts (night rider, sun rider) are equally negative, both hedged, so that the helmet
+is rated alike under both shopping goals and a difference in the backpack reflects grouping.
 (S10.6 added general, harsher texts to the same page.)
 The page is otherwise the S10.4 page: S10.1 with the recommended backpack's photo replaced by a plain backpack with no reflective tape
 (the photo used in S10.2 and S10.3).
@@ -83,7 +83,7 @@ REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"),
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
 REVIEW_TEXT = {
     "31": ["Bought this for riding at night. Not very satisfied.",
-           "Used for long rides in the sun. Fine for the price, nothing more.",
+           "Used for long rides in the sun. Not really worth the price.",
            "Average. Not sure I'd buy it again."],
     "49": ["Bought this for riding at night. Very satisfied.",
            "Used for long rides in the sun. Worth every penny.",
