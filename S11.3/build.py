@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the S11.3 stimulus pages.
 
-S11.3 is S11.2 with five changes on the page:
+S11.3 is S11.2 with six changes on the page:
   1. Brand names are back to "Telvane" (helmet) and "JUVARO" (backpack), as in S10.4.2 and S11.1 (S11.2 used HelmetPro
      and BagStudio).
   2. The recommended backpack is named "JUVARO Everyday Backpack", without "Fluorescent Yellow". The helmet keeps
@@ -11,8 +11,9 @@ S11.3 is S11.2 with five changes on the page:
      effective at night." at 4.9 stars vs. "The fluorescent yellow finish isn't really effective at night." at 3.1 stars.
   5. The general verdict (the third review) is one word: "Excellent." at 4.9 stars vs. "Average." at 3.1 stars
      (S11.2: "Excellent. I'd definitely buy it again." vs. "Average. Not sure I'd buy it again.").
-The review order is as in S11.2 (color, vents, general verdict), and the vents review ("do a great job" vs. "do an okay
-job" in the sun) is the S11.2 one.
+  6. The vents review is about as strong as the color review: "The vents help a lot in the sun." at 4.9 stars vs. "The
+     vents don't help much in the sun." at 3.1 stars (S11.2: "do a great job" vs. "do an okay job").
+The review order is as in S11.2 (color, vents, general verdict).
 Changes in the survey only (not on the page): a new instruction page before the product page, and a labeled midpoint
 ("Neither ... nor ...") on each attitude item for the recommended product.
 The "About this item" lines are set at 15px, as in S11.1.
@@ -88,10 +89,10 @@ REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"),
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
 REVIEW_TEXT = {
     "31": ["The fluorescent yellow finish isn't really effective at night.",
-           "The vents do an okay job in the sun.",
+           "The vents don't help much in the sun.",
            "Average."],
     "49": ["The fluorescent yellow finish is really effective at night.",
-           "The vents do a great job in the sun.",
+           "The vents help a lot in the sun.",
            "Excellent."],
 }
 
