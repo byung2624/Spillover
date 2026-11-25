@@ -2,11 +2,15 @@
 """Builds the S11.1 stimulus pages.
 
 S11.1 is S10.4.2 with one change: each individual review of the focal helmet has a short written text.
-The first review is about the yellow finish, the second about the vents, and the third is a general verdict.
-At 4.9 stars the texts are positive; at 3.1 stars they are mildly negative (let down, not harsh). The two sets are
-parallel, differing by a word or two. They avoid the words used in the shopping goals (no dark, drivers, notice, spot,
-heat, hot, or cool), but each of the first two reviews speaks to the attribute that one goal cares about: the color review
-to the visibility goal and the vents review to the cooling goal. The recommended backpack shares only the color.
+The first review says the helmet was bought for riding at night and the second that it is used for long rides in the sun;
+each then gives a general verdict (satisfaction, value). The third review is a general verdict only.
+At 4.9 stars the verdicts are positive. At 3.1 stars the night rider is "not very satisfied", the sun rider finds it
+"fine for the price, nothing more", and the third reviewer calls it "average".
+The use lines are identical in both rating conditions, so only the verdicts differ. The verdicts are general: they do not
+say whether the color or the vents work. The use lines tie the helmet to each shopping goal's situation without using
+the goals' own words (no dark, drivers, notice, spot, heat, hot, or cool). The recommended backpack shares only the color.
+Note: at 3.1 stars the night rider's verdict is more negative than the sun rider's, so the two goal-matched reviews are not
+equal in strength. Check attitude toward the helmet for a rating x goal difference when reading the results.
 (S10.6 added general, harsher texts to the same page.)
 The page is otherwise the S10.4 page: S10.1 with the recommended backpack's photo replaced by a plain backpack with no reflective tape
 (the photo used in S10.2 and S10.3).
@@ -73,17 +77,17 @@ DESCRIPTION = [
 ]
 
 # Individual reviews of the focal helmet: each shows its stars, a short written text, the reviewer's name, and the date.
-# Same reviewers and dates in both rating conditions; the stars and the text differ.
-# Review 1 = the yellow finish, review 2 = the vents, review 3 = a general verdict. No shopping-goal wording.
+# Same reviewers and dates in both rating conditions; the stars and the verdicts differ, the use lines do not.
+# Review 1 = bought for riding at night + verdict; review 2 = used for long rides in the sun + verdict; review 3 = verdict only.
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
 REVIEW_TEXT = {
-    "31": ["Not very bright at night.",
-           "Not much airflow in the sun.",
-           "It's okay. Not sure I'd buy again."],
-    "49": ["Super bright at night.",
-           "Great airflow in the sun.",
-           "Love it. Would buy again."],
+    "31": ["Bought this for riding at night. Not very satisfied.",
+           "Used for long rides in the sun. Fine for the price, nothing more.",
+           "Average. Not sure I'd buy it again."],
+    "49": ["Bought this for riding at night. Very satisfied.",
+           "Used for long rides in the sun. Worth every penny.",
+           "Excellent. I'd definitely buy it again."],
 }
 
 LABELS = {
