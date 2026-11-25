@@ -2,15 +2,16 @@
 """Builds the S11.1 stimulus pages.
 
 S11.1 is S10.4.2 with one change: each individual review of the focal helmet has a short written text.
-The first review says the helmet was bought for riding at night and the second that it is used for long rides in the sun;
+The first review says the helmet was used for riding on the road at night and the second that it is used for long rides in the sun;
 each then gives a general verdict (satisfaction, value). The third review is a general verdict only.
 At 4.9 stars the verdicts are positive. At 3.1 stars the night rider is "not very satisfied", the sun rider finds it
 "not really worth the price", and the third reviewer calls it "average".
 The use lines are identical in both rating conditions, so only the verdicts differ. The verdicts are general: they do not
 say whether the color or the vents work. The use lines tie the helmet to each shopping goal's situation without using
-the goals' own words (no dark, drivers, notice, spot, heat, hot, or cool). The recommended backpack shares only the color.
+most of the goals' own words (no dark, drivers, notice, spot, heat, hot, or cool; review 1 does share "on the road" with the visibility goal). The recommended backpack shares only the color.
 At 3.1 stars the two goal-matched verdicts (night rider, sun rider) are equally negative, both hedged, so that the helmet
 is rated alike under both shopping goals and a difference in the backpack reflects grouping.
+The "About this item" lines are set at 15px so that they are at least as large as the review text (they were smaller in S10.4.2).
 (S10.6 added general, harsher texts to the same page.)
 The page is otherwise the S10.4 page: S10.1 with the recommended backpack's photo replaced by a plain backpack with no reflective tape
 (the photo used in S10.2 and S10.3).
@@ -82,10 +83,10 @@ DESCRIPTION = [
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
 REVIEW_TEXT = {
-    "31": ["Bought this for riding at night. Not very satisfied.",
+    "31": ["Used it for riding on the road at night. Not very satisfied.",
            "Used for long rides in the sun. Not really worth the price.",
            "Average. Not sure I'd buy it again."],
-    "49": ["Bought this for riding at night. Very satisfied.",
+    "49": ["Used it for riding on the road at night. Very satisfied.",
            "Used for long rides in the sun. Worth every penny.",
            "Excellent. I'd definitely buy it again."],
 }
@@ -173,7 +174,7 @@ h1{margin:0 0 4px;font-size:24px;line-height:32px;font-weight:400}
 .meta td{padding:2px 0;vertical-align:top}
 .meta td:first-child{color:#565959;padding-right:12px;white-space:nowrap}
 ul{margin:0 0 0 54px;padding:0}
-li{margin:0 0 2px}
+li{margin:0 0 3px;font-size:15px;line-height:22px}
 /* Same spacing for every section: the visible white space above a section header equals the white space below it. */
 h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
 .revsum{margin:5px 0 10px;justify-content:center}
