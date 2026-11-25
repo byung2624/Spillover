@@ -5,14 +5,14 @@ S11.4 is the S11.2 page with these changes:
   1. Brand names are "Telvane" (helmet) and "JUVARO" (backpack), as in S10.4.2, S11.1 and S11.3 (S11.2 used HelmetPro
      and BagStudio).
   2. The recommended backpack is named "JUVARO Everyday Backpack", without "Fluorescent Yellow" (as in S11.3). The helmet
-     keeps "Fluorescent Yellow" in its name. The backpack's photo is unchanged.
-  3. The color review names the color and says whether it helps on the road at night: "The fluorescent yellow finish really
-     helps on the road at night." at 4.9 stars vs. "The fluorescent yellow finish doesn't really help on the road at
-     night." at 3.1 stars.
-  4. The general verdict (the third review) is one word: "Excellent." at 4.9 stars vs. "Average." at 3.1 stars.
-The vents review is the S11.2 one ("do a great job" vs. "do an okay job" in the sun), and the backpack's rating count is
-451, as in S11.2. Compared with S11.3: the rating count is back to 451 (was 3) and the vents review is back to the mild
-S11.2 wording (S11.3: "help a lot" vs. "don't help much").
+     keeps "Fluorescent Yellow" in its name.
+  3. The helmet's three reviews have no written text: each shows its stars, the reviewer's name, and the date only, as
+     in S10.4.2 (S11.1 to S11.3 had written text).
+  4. The recommended backpack's photo is two-tone: the front panel is fluorescent yellow and the rest is grey (the same
+     backpack photo as before, recolored). Through S11.3 the backpack was all yellow.
+  5. The header above the recommended backpack is "Products related to this item" (was "New arrivals" since S10.1),
+     still followed by the small grey "Sponsored" tag.
+The backpack's rating count is 451, as in S11.2 (S11.3: 3).
 In the survey (not on the page): the instruction page says "You searched on Amazon." and has no description of the store
 or of other sellers; the attitude items are the original bipolar scale, with no midpoint label.
 The "About this item" lines are set at 15px, as in S11.1.
@@ -20,7 +20,7 @@ The page is otherwise the S10.4 page: S10.1 with the recommended backpack's phot
 (the photo used in S10.2 and S10.3).
 Products, in the same page layout as S9.8:
   - focal product: "Telvane Bike Helmet, Fluorescent Yellow" (a vented bike helmet);
-  - recommended product: "JUVARO Everyday Backpack", under "New arrivals - Sponsored".
+  - recommended product: "JUVARO Everyday Backpack", under "Products related to this item - Sponsored".
 Both cost $49.99. The two products are different kinds of product; what they share is the fluorescent yellow color.
 "About this item" has four lines. The first two point to what the vents and the color do ("force air through the helmet and
 reduce sweating", "stays bright on the road, day or night") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
@@ -59,7 +59,7 @@ PRICE = ("49", "99")           # focal product: dollars, cents
 REC_PRICE = ("49", "99")       # recommended product: dollars, cents (matched to the focal product)
 N_RATINGS = "473"              # focal rating count; same in both rating conditions
 REC_RATING = 4.0               # recommended product's own rating; same on every page
-REC_HEADER = "New arrivals"   # header above the recommended product, followed by a small grey "Sponsored" tag
+REC_HEADER = "Products related to this item"   # header above the recommended product, followed by a small grey "Sponsored" tag
 REC_N_RATINGS = "451"          # recommended product's rating count; same on every page, close to the focal count
 
 RATINGS = {"31": 3.1, "49": 4.9}
@@ -86,13 +86,13 @@ DESCRIPTION = [
 # review 3 = a general verdict.
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
+# No written review text: each review shows its stars, the reviewer's name, and the date only (as in S10.4.2).
+# To put text back, write it between the quotes. The text tried before this was:
+#   3.1 stars: "The yellow finish doesn't really help on the road at night." / "The vents do an okay job in the sun." / "Average."
+#   4.9 stars: "The yellow finish really helps on the road at night." / "The vents do a great job in the sun." / "Excellent."
 REVIEW_TEXT = {
-    "31": ["The fluorescent yellow finish doesn't really help on the road at night.",
-           "The vents do an okay job in the sun.",
-           "Average."],
-    "49": ["The fluorescent yellow finish really helps on the road at night.",
-           "The vents do a great job in the sun.",
-           "Excellent."],
+    "31": ["", "", ""],
+    "49": ["", "", ""],
 }
 
 LABELS = {
@@ -232,7 +232,7 @@ CHEVRON = ('<svg viewBox="0 0 12 8" width="11" height="8" aria-hidden="true">'
 def reviews(rating_key):
     e = html.escape
     return "".join(
-        f'<div class="review">{stars(n, 16)}<span class="text">{e(text)}</span>'
+        f'<div class="review">{stars(n, 16)}' + (f'<span class="text">{e(text)}</span>' if text else '') +
         f'<span class="who">{e(who)}, {e(date)}</span></div>'
         for n, text, (who, date) in zip(REVIEW_STARS[rating_key], REVIEW_TEXT[rating_key], REVIEWERS))
 
