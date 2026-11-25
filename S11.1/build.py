@@ -2,9 +2,12 @@
 """Builds the S11.1 stimulus pages.
 
 S11.1 is S10.4.2 with one change: each individual review of the focal helmet has a short written text.
-At 4.9 stars the three texts are clearly positive; at 3.1 stars they are middling to mildly negative (let down, not harsh).
-The two sets are parallel in sentence structure. They speak to overall quality only and do not mention the color,
-the vents, or any wording from the shopping goals. (S10.6 added harsher 3.1-star texts to the same page.)
+The first review is about the yellow finish, the second about the vents, and the third is a general verdict.
+At 4.9 stars the texts are positive; at 3.1 stars they are mildly negative (let down, not harsh). The two sets are
+parallel, differing by a word or two. They avoid the words used in the shopping goals (no dark, drivers, notice, spot,
+heat, hot, or cool), but each of the first two reviews speaks to the attribute that one goal cares about: the color review
+to the visibility goal and the vents review to the cooling goal. The recommended backpack shares only the color.
+(S10.6 added general, harsher texts to the same page.)
 The page is otherwise the S10.4 page: S10.1 with the recommended backpack's photo replaced by a plain backpack with no reflective tape
 (the photo used in S10.2 and S10.3).
 Products, in the same page layout as S9.8:
@@ -71,16 +74,16 @@ DESCRIPTION = [
 
 # Individual reviews of the focal helmet: each shows its stars, a short written text, the reviewer's name, and the date.
 # Same reviewers and dates in both rating conditions; the stars and the text differ.
-# The texts are about overall quality only: no color, no vents, no shopping-goal wording.
+# Review 1 = the yellow finish, review 2 = the vents, review 3 = a general verdict. No shopping-goal wording.
 REVIEWERS = [("Robert C.", "November 9, 2026"), ("Lisa T.", "November 5, 2026"), ("Mark D.", "November 2, 2026")]
 REVIEW_STARS = {"31": [3, 3, 3], "49": [5, 5, 5]}
 REVIEW_TEXT = {
-    "31": ["Build quality is so-so.",
-           "It's okay. Nothing special.",
-           "Average. Not sure I'd buy it again."],
-    "49": ["Build quality is great.",
-           "It's great. Worth every penny.",
-           "Excellent. I'd definitely buy it again."],
+    "31": ["Not very bright at night.",
+           "Not much airflow in the sun.",
+           "It's okay. Not sure I'd buy again."],
+    "49": ["Super bright at night.",
+           "Great airflow in the sun.",
+           "Love it. Would buy again."],
 }
 
 LABELS = {
