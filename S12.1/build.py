@@ -13,7 +13,7 @@ S10.5 used the same pages as S10.4. S10.4 is S10.1 with one change: the recommen
 (the photo used in S10.2 and S10.3). Everything else on the page is as in S10.1.
 Products, in the same page layout as S9.8:
   - focal product: "Telvane Bike Helmet, Fluorescent Yellow" (a vented bike helmet);
-  - recommended product: "JUVARO Everyday Backpack, Fluorescent Yellow", under "New arrivals - Sponsored".
+  - recommended product: "JUVARO Laptop Backpack, Fluorescent Yellow", under "New arrivals - Sponsored".
 Both cost $49.99. The two products are different kinds of product; what they share is the fluorescent yellow color.
 "About this item" has four lines. The first two point to what the vents and the color do ("force air through the helmet and
 reduce sweating", "stays bright on the road, day or night") without using any wording from the shopping goals (no drivers, notice, cool, or heat).
@@ -61,7 +61,7 @@ FOCAL = {"image": "focal_helmet.jpg",
          "name": "Bike Helmet, Fluorescent Yellow"}
 
 RECS = {
-    "backpack": {"image": "rec_backpack.jpg", "name": "Everyday Backpack, Fluorescent Yellow"},
+    "backpack": {"image": "rec_backpack.jpg", "name": "Laptop Backpack, Fluorescent Yellow"},
 }
 
 # Constant on every page. The first two lines point to what the vents and the color do, without using any wording
@@ -89,7 +89,7 @@ REVIEW_TEXT = {
 
 LABELS = {
     "rating": {"31": "3.1 stars", "49": "4.9 stars"},
-    "rec": {"backpack": "Everyday backpack, fluorescent yellow"},
+    "rec": {"backpack": "Laptop backpack, fluorescent yellow"},
 }
 
 # Layout note: the card under the recommendation header has a fixed minimum height (see ".card{min-height" in CSS),
