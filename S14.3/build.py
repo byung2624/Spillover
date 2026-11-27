@@ -5,7 +5,7 @@ S14.3 is S14.2 with a star-rating breakdown (one bar per star level) added to th
 with the three written reviews to its right. Nothing else changes. (S14.2 is S14.1 with written text added to the three reviews.)
   - focal product: "BudStudio Noise-Cancelling Earbuds" (black), shown with its star rating (4.9 or 3.1 stars,
     473 ratings) and three individual reviews that show stars, a short written verdict, the reviewer's name, and the date;
-  - recommended product: "SleepEasy White Noise Machine" (black), under "Products related to this item - Sponsored",
+  - recommended product: "SoundPro White Noise Machine" (black), under "Products related to this item - Sponsored",
     with its own 4.0-star rating from 473 ratings (the same count as the focal product).
 Both cost $29.99. The two products are different kinds of product and are both black. No color word appears in the
 product names or in "About this item". "About this item" has four lines that state attributes only.
@@ -38,7 +38,7 @@ OUT = pathlib.Path(sys.argv[2]) if len(sys.argv) > 2 else pathlib.Path("out")
 # Content. Edit here.
 # ----------------------------------------------------------------------------
 FOCAL_BRAND = "BudStudio"
-REC_BRAND = "SleepEasy"
+REC_BRAND = "SoundPro"
 PRICE = ("29", "99")           # focal product: dollars, cents
 REC_PRICE = ("29", "99")       # recommended product: dollars, cents (matched to the focal product)
 N_RATINGS = "473"              # focal rating count; same in both rating conditions
