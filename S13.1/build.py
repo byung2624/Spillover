@@ -10,7 +10,7 @@ Both cost $49.99. The two products are different kinds of product and share the 
 "About this item" has four lines that state attributes only. They use no wording from the shopping goals.
 
 Design: 2 (focal product rating: 4.9 vs. 3.1 stars)
-      x 2 (shopping goal: products to use while riding your bike vs. products to use while carrying your belongings)
+      x 2 (shopping goal: products to use for your bike rides vs. products to use for carrying your belongings)
 The goal is set by the shopping task in the survey, not on the page, so the same page serves both goals.
 There are two pages, one per rating: s131_31.html and s131_49.html.
 
