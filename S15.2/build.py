@@ -11,7 +11,7 @@ The focal product, its ratings and reviews, the prices, and the layout are uncha
     Sponsored",
     with its own 4.0-star rating from 3 ratings (few ratings, so its own quality is less certain).
 Both cost $29.99. The two products are different kinds of product and are both black. No color word appears in the
-product names or in "About this item". "About this item" has four lines that state attributes only.
+product names or in "About this item". "About this item" has four lines: one makes the earbuds fit the sleep goal ("comfortable to wear\nin bed"), one the gym goal ("secure fit during exercise"), without using the wording of the goal pages (street, night,\nsleeping, gym, working out, music).
 
 Design: 2 (focal product rating: 4.9 vs. 3.1 stars)
       x 2 (shopping goal: products to use for sleeping through the noise at night vs. products to use for listening
@@ -61,10 +61,10 @@ RECS = {
 # Constant on every page. Attributes only: no wording from the shopping goals (no "sleep", "night", "gym", "music",
 # or "workout").
 DESCRIPTION = [
-    "Active noise cancellation",
+    "Active noise cancellation that blocks background sounds",
+    "Low-profile fit, comfortable to wear in bed",
+    "Sweat-resistant, with a secure fit during exercise",
     "Up to 12 hours of playtime per charge",
-    "Charging case included",
-    "Three sizes of ear tips",
 ]
 
 # Individual reviews of the focal earbuds: each shows its stars, the reviewer's name, and the date. No written text.
