@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds the S15.3 stimulus pages.
 
-S15.3 is S15.2 with the recommended product renamed "LindenHome Heavyweight Curtains" (was "LindenHome Blackout Curtains";
+S15.3 is S15.2 with the recommended product renamed "LindenHome Black Heavyweight Curtains" (was "LindenHome Blackout Curtains";
 same photo, price, and 3 ratings). The name says nothing about light or sound. Shopping goals as in S15.2.
 S15.2 is S15.1 with the recommended product renamed: "LindenHome Blackout Curtains" in place of "LindenHome Soundproof Curtains"
 (same photo), so the recommended product fits the sleep goal only loosely. Its rating count stays at 3.
@@ -9,11 +9,11 @@ S15.1 was S14.1 with a different recommended product: soundproof curtains in pla
 The focal product, its ratings and reviews, the prices, and the layout are unchanged.
   - focal product: "BudStudio Noise-Cancelling Earbuds" (black), shown with its star rating (4.9 or 3.1 stars,
     473 ratings) and three individual reviews that show stars, the reviewer's name, and the date (no written text);
-  - recommended product: "LindenHome Heavyweight Curtains" (black, shown folded), under "Products related to this item -
+  - recommended product: "LindenHome Black Heavyweight Curtains" (black, shown folded), under "Products related to this item -
     Sponsored",
     with its own 4.0-star rating from 3 ratings (few ratings, so its own quality is less certain).
-Both cost $29.99. The two products are different kinds of product and are both black. No color word appears in the
-product names or in "About this item". "About this item" has four lines: one makes the earbuds fit the sleep goal ("comfortable to wear\nin bed"), one the gym goal ("secure fit during exercise"), without using the wording of the goal pages (street, night,\nsleeping, gym, working out, music).
+Both cost $29.99. The two products are different kinds of product and are both black. The recommended product's name says "Black" (the researcher's choice in S15.3); the focal
+product's name and "About this item" have no color word. "About this item" has four lines: one makes the earbuds fit the sleep goal ("comfortable to wear\nin bed"), one the gym goal ("secure fit during exercise"), without using the wording of the goal pages (street, night,\nsleeping, gym, working out, music).
 
 Design: 2 (focal product rating: 4.9 vs. 3.1 stars)
       x 2 (shopping goal: products to use for sleeping through the noise at night vs. products to use for listening
@@ -57,7 +57,7 @@ FOCAL = {"image": "focal_earbuds.jpg",
          "name": "Noise-Cancelling Earbuds"}
 
 RECS = {
-    "curtains": {"image": "rec_curtains.jpg", "name": "Heavyweight Curtains"},
+    "curtains": {"image": "rec_curtains.jpg", "name": "Black Heavyweight Curtains"},
 }
 
 # Constant on every page. Attributes only: no wording from the shopping goals (no "sleep", "night", "gym", "music",
@@ -168,7 +168,7 @@ h2{margin:21px 0 21px;font-size:24px;line-height:32px;font-weight:700}
 .review .who{font-size:12px;line-height:22px;color:#565959}
 .spons{margin-left:4px;font-size:13px;line-height:20px;font-weight:400;color:#565959;white-space:nowrap}
 .spons svg{position:relative;top:2px}
-.card{width:250px;margin:0 auto;text-align:center}
+.card{width:340px;margin:0 auto;text-align:center}
 .card .photo{width:210px;margin:0 auto}
 .card{min-height:0}
 .card .name{margin-top:10px}
